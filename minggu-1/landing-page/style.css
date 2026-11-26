@@ -1,0 +1,390 @@
+/* ==========================================================
+   1. VARIABLES (ganti nilai di sini, seluruh halaman ikut berubah)
+   ========================================================== */
+:root {
+  --warna-utama: #1d4ed8;
+  --warna-utama-gelap: #1e3a8a;
+  --warna-aksen: #f59e0b;
+  --warna-teks: #1f2937;
+  --warna-teks-redup: #4b5563;
+  --warna-latar: #f8fafc;
+  --warna-putih: #ffffff;
+  --warna-garis: #d1d5db;
+
+  --font-utama: "Poppins", system-ui, sans-serif;
+  --radius: 0.75rem;
+  --jarak: 1rem;
+  --lebar-maks: 70rem;
+}
+
+/* ==========================================================
+   2. RESET DAN DASAR
+   ========================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 4.5rem; /* supaya judul tidak tertutup navbar sticky */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-utama);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--warna-teks);
+  background: var(--warna-latar);
+}
+
+img { max-width: 100%; height: auto; }
+
+h1, h2, h3 { line-height: 1.25; margin: 0 0 0.5rem; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; text-align: center; margin-bottom: 1.5rem; }
+h3 { font-size: 1.125rem; }
+p  { margin: 0 0 0.75rem; }
+
+a { color: var(--warna-utama); }
+
+/* Fokus keyboard terlihat jelas (penting untuk Accessibility) */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--warna-aksen);
+  outline-offset: 2px;
+}
+
+/* Padding kiri-kanan section: rapi di mobile, terpusat di layar lebar */
+main > section {
+  padding: 3rem max(var(--jarak), calc((100% - var(--lebar-maks)) / 2));
+}
+
+/* ==========================================================
+   3. KOMPONEN UMUM: tombol dan card
+   ========================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--warna-utama);
+  border-radius: var(--radius);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-utama {
+  background: var(--warna-utama);
+  color: var(--warna-putih);
+}
+.btn-utama:hover { background: var(--warna-utama-gelap); border-color: var(--warna-utama-gelap); }
+
+.btn-sekunder {
+  background: transparent;
+  color: var(--warna-utama);
+}
+.btn-sekunder:hover { background: var(--warna-utama); color: var(--warna-putih); }
+
+.card {
+  margin: 0;
+  padding: 1.25rem;
+  background: var(--warna-putih);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius);
+}
+
+.label-contoh {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--warna-teks-redup);
+}
+
+/* ==========================================================
+   4. NAVBAR STICKY + HAMBURGER (mobile dulu)
+   ========================================================== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--warna-putih);
+  border-bottom: 1px solid var(--warna-garis);
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: var(--lebar-maks);
+  margin: 0 auto;
+  padding: 0.75rem var(--jarak);
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--warna-utama-gelap);
+  text-decoration: none;
+}
+
+/* Checkbox disembunyikan secara visual, tapi tetap bisa difokus keyboard */
+.menu-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hamburger {
+  padding: 0.25rem 0.75rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  border: 1px solid var(--warna-garis);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.menu-toggle:focus-visible + .hamburger {
+  outline: 3px solid var(--warna-aksen);
+  outline-offset: 2px;
+}
+
+.menu {
+  display: none;            /* mobile: menu tersembunyi */
+  flex-direction: column;
+  width: 100%;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.menu-toggle:checked ~ .menu { display: flex; }  /* checkbox dicentang: menu muncul */
+
+.menu a {
+  display: block;
+  padding: 0.75rem 0;
+  color: var(--warna-teks);
+  font-weight: 600;
+  text-decoration: none;
+  border-top: 1px solid var(--warna-garis);
+}
+.menu a:hover { color: var(--warna-utama); }
+
+/* ==========================================================
+   5. HERO
+   ========================================================== */
+.hero {
+  text-align: center;
+  background: var(--warna-utama-gelap);
+  color: var(--warna-putih);
+}
+.hero p {
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+  font-size: 1.125rem;
+}
+.hero-cta {
+  display: flex;
+  flex-direction: column;   /* mobile: tombol bertumpuk */
+  gap: 0.75rem;
+}
+.hero .btn-utama {
+  background: var(--warna-aksen);
+  border-color: var(--warna-aksen);
+  color: #111827;
+}
+.hero .btn-utama:hover { background: #fbbf24; border-color: #fbbf24; }
+.hero .btn-sekunder {
+  color: var(--warna-putih);
+  border-color: var(--warna-putih);
+}
+.hero .btn-sekunder:hover { background: var(--warna-putih); color: var(--warna-utama-gelap); }
+
+/* ==========================================================
+   6. KEUNGGULAN (FLEXBOX)
+   ========================================================== */
+.keunggulan-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--jarak);
+}
+.keunggulan-list .card {
+  flex: 1 1 100%;           /* mobile: 1 card per baris */
+}
+
+/* ==========================================================
+   7. KURIKULUM (CSS GRID: 1 / 2 / 3 kolom)
+   ========================================================== */
+.kurikulum { background: var(--warna-putih); }
+.kurikulum .card { background: var(--warna-latar); }
+
+.kurikulum-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* mobile: 1 kolom */
+  gap: var(--jarak);
+}
+
+/* ==========================================================
+   8. ALUR PENDAFTARAN
+   ========================================================== */
+.alur-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--jarak);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: langkah;
+}
+.alur-list li {
+  position: relative;
+  padding: 1.25rem 1.25rem 1.25rem 4rem;
+  background: var(--warna-putih);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius);
+  counter-increment: langkah;
+}
+.alur-list li::before {
+  content: counter(langkah);
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  font-weight: 600;
+  color: var(--warna-putih);
+  background: var(--warna-utama);
+  border-radius: 50%;
+}
+
+/* ==========================================================
+   9. TESTIMONI
+   ========================================================== */
+.testimoni { background: var(--warna-putih); }
+.testimoni .card { background: var(--warna-latar); }
+
+.testimoni-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--jarak);
+}
+.testimoni blockquote { margin: 0 0 0.75rem; font-style: italic; }
+.testimoni figcaption { font-weight: 600; }
+
+/* ==========================================================
+   10. FAQ
+   ========================================================== */
+.faq details {
+  max-width: 48rem;
+  margin: 0 auto 0.75rem;
+  background: var(--warna-putih);
+  border: 1px solid var(--warna-garis);
+  border-radius: var(--radius);
+}
+.faq summary {
+  padding: 1rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.faq details[open] summary { border-bottom: 1px solid var(--warna-garis); }
+.faq details p { margin: 0; padding: 1rem 1.25rem; }
+
+/* ==========================================================
+   11. FORM KONTAK
+   ========================================================== */
+.kontak { background: var(--warna-putih); }
+
+.form {
+  max-width: 36rem;
+  margin: 0 auto;
+}
+.form-group { margin-bottom: 1rem; }
+.form-group label {
+  display: block;
+  margin-bottom: 0.375rem;
+  font-weight: 600;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font: inherit;
+  color: var(--warna-teks);
+  background: var(--warna-putih);
+  border: 1px solid #6b7280;
+  border-radius: 0.5rem;
+}
+.form-group input:user-invalid,
+.form-group textarea:user-invalid {
+  border-color: #b91c1c;
+}
+
+/* ==========================================================
+   12. FOOTER
+   ========================================================== */
+.footer {
+  padding: 2rem var(--jarak);
+  text-align: center;
+  color: var(--warna-putih);
+  background: var(--warna-utama-gelap);
+}
+.footer p { margin: 0 0 0.25rem; }
+.footer a { color: var(--warna-putih); }
+
+/* ==========================================================
+   MEDIA QUERY (mobile-first: pakai min-width)
+   ========================================================== */
+
+/* ---------- 576px: HP besar ---------- */
+@media (min-width: 576px) {
+  main > section { padding-block: 3.5rem; }
+
+  .hero-cta {
+    flex-direction: row;       /* tombol hero berdampingan */
+    justify-content: center;
+  }
+
+  .keunggulan-list .card {
+    flex: 1 1 calc(50% - 0.5rem);   /* 2 card per baris */
+  }
+
+  .alur-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- 768px: tablet ---------- */
+@media (min-width: 768px) {
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 1.875rem; }
+
+  .kurikulum-grid { grid-template-columns: repeat(2, 1fr); }   /* 2 kolom */
+  .testimoni-list { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- 992px: desktop ---------- */
+@media (min-width: 992px) {
+  /* Navbar penuh, hamburger hilang */
+  .hamburger { display: none; }
+  .menu {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    margin: 0;
+    gap: 1.5rem;
+  }
+  .menu a { padding: 0.5rem 0; border-top: 0; }
+
+  .keunggulan-list .card { flex: 1 1 0; }          /* 4 card sebaris */
+  .kurikulum-grid { grid-template-columns: repeat(3, 1fr); }   /* 3 kolom */
+  .alur-list { grid-template-columns: repeat(4, 1fr); }
+}
