@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Landing page fiktif Udacoding Bootcamp Fullstack 12 Minggu.">
+  <title>Udacoding Bootcamp Fullstack 12 Minggu</title>
+
+  <!-- Google Fonts (ganti Poppins kalau mau font lain) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS di file terpisah -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="header">
+    <nav class="navbar" aria-label="Navigasi utama">
+      <a href="#beranda" class="logo">Udacoding</a>
+
+      <!-- Hamburger tanpa JavaScript: checkbox + label -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      <label for="menu-toggle" class="hamburger" aria-label="Buka menu">&#9776;</label>
+
+      <ul class="menu">
+        <li><a href="#keunggulan">Keunggulan</a></li>
+        <li><a href="#kurikulum">Kurikulum</a></li>
+        <li><a href="#alur">Alur</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO (satu-satunya H1) ========== -->
+    <section id="beranda" class="hero">
+      <h1>Bootcamp Fullstack 12 Minggu</h1>
+      <p>Belajar dari nol sampai punya portofolio project nyata.</p>
+      <div class="hero-cta">
+        <a href="#kontak" class="btn btn-utama">Daftar sekarang</a>
+        <a href="#kurikulum" class="btn btn-sekunder">Lihat kurikulum</a>
+      </div>
+    </section>
+
+    <!-- ========== 4 CARD KEUNGGULAN (Flexbox) ========== -->
+    <section id="keunggulan" class="keunggulan">
+      <h2>Kenapa belajar di sini</h2>
+      <div class="keunggulan-list">
+        <article class="card">
+          <h3>Mentor praktisi</h3>
+          <p>Dibimbing orang yang bekerja di industri.</p>
+        </article>
+        <article class="card">
+          <h3>Project nyata</h3>
+          <p>Setiap minggu membuat sesuatu yang bisa didemokan.</p>
+        </article>
+        <article class="card">
+          <h3>Komunitas aktif</h3>
+          <p>Belajar bareng dan saling review kode.</p>
+        </article>
+        <article class="card">
+          <h3>Sertifikat</h3>
+          <p>Bukti kelulusan untuk portofolio.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== 6 CARD KURIKULUM (CSS Grid: 3/2/1 kolom) ========== -->
+    <section id="kurikulum" class="kurikulum">
+      <h2>Kurikulum 12 minggu</h2>
+      <div class="kurikulum-grid">
+        <article class="card">
+          <h3>Minggu 1-2: HTML dan CSS</h3>
+          <p>Dasar halaman web dan tampilan responsif.</p>
+        </article>
+        <article class="card">
+          <h3>Minggu 3-4: JavaScript</h3>
+          <p>Logika dasar dan interaksi di browser.</p>
+        </article>
+        <article class="card">
+          <h3>Minggu 5-6: PHP</h3>
+          <p>Pemrograman sisi server.</p>
+        </article>
+        <article class="card">
+          <h3>Minggu 7-8: Laravel</h3>
+          <p>Framework untuk aplikasi web lengkap.</p>
+        </article>
+        <article class="card">
+          <h3>Minggu 9-10: Database</h3>
+          <p>MySQL, relasi tabel, dan query.</p>
+        </article>
+        <article class="card">
+          <h3>Minggu 11-12: Project akhir</h3>
+          <p>Membangun dan men-deploy aplikasi sendiri.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ========== ALUR PENDAFTARAN (4 langkah) ========== -->
+    <section id="alur" class="alur">
+      <h2>Alur pendaftaran</h2>
+      <ol class="alur-list">
+        <li><h3>Isi formulir</h3><p>Lengkapi data diri singkat.</p></li>
+        <li><h3>Seleksi</h3><p>Tes dasar dan wawancara ringan.</p></li>
+        <li><h3>Konfirmasi</h3><p>Terima pengumuman dan jadwal.</p></li>
+        <li><h3>Mulai belajar</h3><p>Masuk kelas minggu pertama.</p></li>
+      </ol>
+    </section>
+
+    <!-- ========== 3 TESTIMONI (nama fiktif, label "contoh") ========== -->
+    <section id="testimoni" class="testimoni">
+      <h2>Kata alumni <span class="label-contoh">(contoh)</span></h2>
+      <div class="testimoni-list">
+        <figure class="card">
+          <blockquote>Materinya runtut, cocok untuk pemula.</blockquote>
+          <figcaption>Budi Contoh <span class="label-contoh">(contoh)</span></figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>Mentornya sabar dan mau mereview kode.</blockquote>
+          <figcaption>Sari Contoh <span class="label-contoh">(contoh)</span></figcaption>
+        </figure>
+        <figure class="card">
+          <blockquote>Sekarang punya project untuk portofolio.</blockquote>
+          <figcaption>Andi Contoh <span class="label-contoh">(contoh)</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ========== FAQ (details dan summary, minimal 5) ========== -->
+    <section id="faq" class="faq">
+      <h2>Pertanyaan yang sering diajukan</h2>
+      <details>
+        <summary>Apakah cocok untuk pemula?</summary>
+        <p>Ya, materi dimulai dari dasar.</p>
+      </details>
+      <details>
+        <summary>Berapa lama durasinya?</summary>
+        <p>12 minggu.</p>
+      </details>
+      <details>
+        <summary>Apakah ada sertifikat?</summary>
+        <p>Ada, setelah menyelesaikan project akhir.</p>
+      </details>
+      <details>
+        <summary>Perlu laptop sendiri?</summary>
+        <p>Ya, dengan spesifikasi standar sudah cukup.</p>
+      </details>
+      <details>
+        <summary>Bagaimana cara bertanya saat bingung?</summary>
+        <p>Lewat grup komunitas dan sesi tanya jawab mentor.</p>
+      </details>
+    </section>
+
+    <!-- ========== FORM KONTAK (validasi HTML5) ========== -->
+    <section id="kontak" class="kontak">
+      <h2>Hubungi kami</h2>
+      <form action="#" method="post" class="form">
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input type="text" id="nama" name="nama" required minlength="3" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="pesan">Pesan</label>
+          <textarea id="pesan" name="pesan" rows="4" required minlength="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-utama">Kirim pesan</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <p>&copy; 2026 Udacoding Bootcamp (fiktif, untuk latihan).</p>
+    <p><a href="#beranda">Kembali ke atas</a></p>
+  </footer>
+
+</body>
+</html>
